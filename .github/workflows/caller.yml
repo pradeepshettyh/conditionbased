@@ -11,3 +11,17 @@ jobs:
     firstjob:
         name: My first job
         uses: ./.github/workflows/callee.yml
+        with:
+            osname: ${{ inputs.osname }}
+        secrets: 
+            username: pradeep shetty
+    secondjob:
+        needs: firstjob
+        runs-on: ${{ inputs.osname }}
+        steps:
+            - name: hello how are you
+              run: |
+                echo "data value is ${{ needs.firstjob.outputs.somedata }}"
+              
+        
+            

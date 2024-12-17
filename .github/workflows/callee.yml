@@ -12,12 +12,35 @@
 #               run: echo "pradeep testing"
 name: Calle workflow
 run-name: I am calling this
-on: workflow_call
+on: 
+    workflow_call:
+        inputs:
+            osname:
+                required: true
+                type: string
+        outputs:
+            somedata:
+                description: It will produce some data
+                value: ${{ jobs.firstjob.outputs.somedata }}
+        secrets:
+            username: 
+                description: provide user name
+                required: true
 jobs:
     firstjob:
         name: I am being called by someone
-        runs-on: ubuntu-latest
+        outputs:
+          somedata: ${{ steps.rama.outputs.kaka }}
+        runs-on: ${{ inputs.osname }}
         steps:
-            - name: Kaka step
-              run: echo 'pradeep running'
-
+            - name: Kaka step ${{ inputs.osname }}
+              run: |
+                echo 'pradeep running on ${{ inputs.osname }}'
+                echo ' secret value is ${{secrets.username}}'
+            - name: checkout the code
+              uses: actions/checkout@v3
+            - name: print some info
+              id: rama
+              run: |
+                echo "kaka=keka" >> $GITHUB_OUTPUT
+                ls
