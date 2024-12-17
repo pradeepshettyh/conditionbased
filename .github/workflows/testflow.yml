@@ -13,6 +13,11 @@ jobs:
                       os_version: 3
                     - node_version: E
                       os_version: 4
+                exclude:
+                    - node_version: B
+                      os_version: 2
+                    - node_version: C
+                      os_version: 1
                 
         runs-on: ubuntu-latest
         steps:
