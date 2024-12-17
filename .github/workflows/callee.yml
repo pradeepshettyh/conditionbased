@@ -6,8 +6,8 @@ on:
         types: completed
 jobs:
     kakajob:
-        runs-on: ${{ inputs.osname }}
+        runs-on: ubuntu-latest
         steps:
-            - name: hello ${{ inputs.osname }}
-              run: echo "${{ inputs.osname }}"
+            - name: hello pradeep
+              run: echo "pradeep testing"
 
