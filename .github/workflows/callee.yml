@@ -1,13 +1,23 @@
-name: Callee workflow
+# name: Callee workflow
+# run-name: I am calling this
+# on: 
+#     workflow_run: 
+#         workflows: Website Deployments
+#         types: completed
+# jobs:
+#     kakajob:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: hello pradeep
+#               run: echo "pradeep testing"
+name: Calle workflow
 run-name: I am calling this
-on: 
-    workflow_run: 
-        workflows: Website Deployments
-        types: completed
+on: workflow_call
 jobs:
-    kakajob:
+    firstjob:
+        name: I am being called by someone
         runs-on: ubuntu-latest
         steps:
-            - name: hello pradeep
-              run: echo "pradeep testing"
+            - name: Kaka step
+              run: echo 'pradeep running'
 

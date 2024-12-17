@@ -1,0 +1,13 @@
+name: Caller flow
+run-name: I am the caller
+on: 
+    workflow_dispatch: 
+        inputs:
+            osname:
+                type: string
+                required: true
+                description: enter os name
+jobs:
+    firstjob:
+        name: My first job
+        uses: ./.github/workflows/callee.yml
