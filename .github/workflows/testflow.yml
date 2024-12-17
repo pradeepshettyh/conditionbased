@@ -8,6 +8,10 @@ jobs:
             matrix:
                 node_version: [A, B, C]
                 os_version: [1,2]
+                include:
+                    - node_version: [D, E]
+                      os_version: [3, 4]
+                
         runs-on: ubuntu-latest
         steps:
             - name: First Step
