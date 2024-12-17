@@ -1,5 +1,9 @@
 name: Website Deployments
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      osname:
+        type: string
   # push:
   #   branches:
   #     - main

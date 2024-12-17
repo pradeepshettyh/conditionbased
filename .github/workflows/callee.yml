@@ -1,0 +1,13 @@
+name: Callee workflow
+run-name: I am calling this
+on: 
+    workflow_run: 
+        workflows: Website Deployments
+        types: completed
+jobs:
+    kakajob:
+        runs-on: ${{ inputs.osname }}
+        steps:
+            - name: hello ${{ inputs.osname }}
+              run: echo "${{ inputs.osname }}"
+
