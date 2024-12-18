@@ -1,0 +1,29 @@
+name: Upload Download Workflow
+run-name: Sample flow
+on:
+    workflow_dispatch: 
+        inputs:
+            osname:
+                type: string
+                required: true
+                description: enter os name
+env:
+    USER_NAME: Pradeep
+    PASS_WORD: Shetty
+jobs:
+    firstJob:
+        name: first job
+        runs-on: ${{ inputs.osname }}
+        steps:
+            - name: checkout the code
+              uses: actions/checkout@v3
+            - name: setup the node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - name: install dependencies
+              run: |
+                npm install
+                ls
+                  
+
